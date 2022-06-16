@@ -1,0 +1,11 @@
+###> phpunit/phpunit ###
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> PHPStorm ###
+/.idea/
+###< PHPStorm ###
+
+###> composer ###
+vendor/
+###< composer ###

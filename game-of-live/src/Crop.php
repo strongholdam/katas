@@ -4,15 +4,26 @@ namespace App;
 
 class Crop
 {
-    public function __construct(private array $cells)
+    private $cells = [];
+
+    public function __construct(private int $heigh, private int $width)
     {
+        for ($y = 0; $y < $width ; $y++) {
+            $this->cells[] = [];
+
+            for ($x = 0; $x < $heigh; $x++) {
+                $this->cells[$y][] = new Cell(false);
+            }
+        }
+    }
+
+    public function setAlive(int $x, $int $y): void
+    {
+        $this->cells[$y - 1][$x - 1]->isAlive(true);
     }
 
     public function countAliveNeighbours($a, $b): void
     {
-        $heigh = count($this->cells);
-        $widgth = count($this->cells[0]);
-        
         for ($i = $a - 1; $i < $a + 1; $i++) {
             if ($i <= 0 || $widgth <= $i) {
                 continue;
@@ -20,7 +31,5 @@ class Crop
         }
     }
 
-    public function setAlive($a, $b): void
-    {
-    }
+
 }

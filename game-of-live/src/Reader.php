@@ -6,11 +6,10 @@ class Reader
 {
     public function read(): Crop
     {
-        return new Crop([
-            [new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false)],
-            [new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(true), new Cell(false), new Cell(false)],
-            [new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(true), new Cell(true), new Cell(false), new Cell(false)],
-            [new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false), new Cell(false)],
-        ]);
+        $crop = new Crop(4, 8);
+
+        $crop->setAlive(2, 5);
+        $crop->setAlive(3, 4);
+        $crop->setAlive(3, 5);
     }
 }

@@ -2,11 +2,8 @@
 
 class Live
 {
-    public function __construct(private \App\Reader $reader)
+    public function execute(Crop $crop): Crop
     {
-    }
-
-    public function execute(): void
-    {
+        return $crop;
     }
 }

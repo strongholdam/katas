@@ -1,0 +1,15 @@
+{
+    "name": "daniel/game-of-live",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel González",
+            "email": "daniel@devtia.com"
+        }
+    ],
+    "require": {}
+}

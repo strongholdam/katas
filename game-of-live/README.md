@@ -46,3 +46,13 @@ Make sure you have enough coverage of edge
 
 cases - where there are births and deaths at the edge of the grid.
 
+
+--------------------------------------------
+
+1. Cualquier celda viva con menos de dos vecinas vivas muere, como si la causa fuera la subpoblación.
+2. Cualquier celda viva con más de tres vecinos vivos muere, como por hacinamiento.
+3. Cualquier celda viva con dos o tres vecinos vivos vive en la próxima generación.
+4. Cualquier celda muerta con exactamente tres vecinos vivos se convierte en una celda viva.
+Debe escribir un programa que pueda aceptar una cuadrícula arbitraria de celdas y generará una cuadrícula similar que muestre el
+próxima generación.
+

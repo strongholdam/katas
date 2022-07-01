@@ -1,8 +1,10 @@
 <?php
 
+namespace App;
+
 class Live
 {
-    public function execute(Crop $crop): Crop
+    public static function execute(Crop $crop): Crop
     {
         return $crop;
     }

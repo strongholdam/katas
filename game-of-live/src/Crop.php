@@ -6,18 +6,18 @@ class Crop
 {
     private $cells = [];
 
-    public function __construct(private int $heigh, private int $width)
+    public function __construct(private int $width, private int $height)
     {
-        for ($y = 0; $y < $width ; $y++) {
+        for ($y = 0; $y < $height ; $y++) {
             $this->cells[] = [];
 
-            for ($x = 0; $x < $heigh; $x++) {
+            for ($x = 0; $x < $width; $x++) {
                 $this->cells[$y][] = new Cell(false);
             }
         }
     }
 
-    public function setAlive(int $x, $int $y): void
+    public function setAlive(int $x, int $y): void
     {
         $this->cells[$y - 1][$x - 1]->isAlive(true);
     }
@@ -31,5 +31,8 @@ class Crop
         }
     }
 
-
+    public function getCells(): array
+    {
+        return $this->cells;
+    }
 }

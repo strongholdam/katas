@@ -6,6 +6,8 @@ class Live
 {
     public static function execute(Crop $crop): Crop
     {
+        var_dump($crop->countAliveNeighbours(1, 1));
+
         return $crop;
     }
 

@@ -6,7 +6,7 @@ class Crop
 {
     private $cells = [];
 
-    public function __construct(private int $width, private int $height)
+    public function __construct(private int $height, private int $width)
     {
         for ($y = 0; $y < $height; $y++) {
             $this->cells[] = [];
@@ -17,50 +17,40 @@ class Crop
         }
     }
 
-    public function countAliveNeighbours($x, $y): void
+    public function countAliveNeighbours(int $y, int $x): int
     {
-        for ($i = $x - 1; $i < $x + 1; $i++) {
-            if ($i <= 0 || $this->getWidth() <= $i) {
+        $aliveNeighbours = 0;
+
+        for ($j = $y -1; $j <= $y +1; $j++) {
+            if ($j <= 0 || $this->height <= $j) {
                 continue;
             }
 
-            for ($yy = $y -1; $yy < $y +1; $yy++) {
-                if ($yy <= 0 || $this->height <= $yy) {
+            for ($i = $x - 1; $i <= $x + 1; $i++) {
+                if ($i <= 0 || $this->width <= $i) {
                     continue;
                 }
 
+                if ($y == $j && $x == $i) {
+                    continue;
+                }
 
-
+                if ($this->cells[$j -1][$i -1]->isAlive()) {
+                    $aliveNeighbours++;
+                }
             }
-
         }
+
+        return $aliveNeighbours;
     }
-
-    private function isAlive($x, $y)
-    {
-        $cell = $this->cells[$x][$y];
-
-        if ($cell->isAlive()) {
-
-        }
-    }
-
-
-
-
 
     public function getCells(): array
     {
         return $this->cells;
     }
 
-    public function setAlive(int $x, int $y): void
+    public function setAlive(int $y, int $x): void
     {
         $this->cells[$y - 1][$x - 1]->setIsAlive(true);
-    }
-
-    private function getWidth(): mixed
-    {
-        return $this->width;
     }
 }

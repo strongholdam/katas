@@ -17,14 +17,37 @@ class Crop
         }
     }
 
-    public function countAliveNeighbours($a, $b): void
+    public function countAliveNeighbours($x, $y): void
     {
-        for ($i = $a - 1; $i < $a + 1; $i++) {
-            if ($i <= 0 || $widgth <= $i) {
+        for ($i = $x - 1; $i < $x + 1; $i++) {
+            if ($i <= 0 || $this->getWidth() <= $i) {
                 continue;
             }
+
+            for ($yy = $y -1; $yy < $y +1; $yy++) {
+                if ($yy <= 0 || $this->height <= $yy) {
+                    continue;
+                }
+
+
+
+            }
+
         }
     }
+
+    private function isAlive($x, $y)
+    {
+        $cell = $this->cells[$x][$y];
+
+        if ($cell->isAlive()) {
+
+        }
+    }
+
+
+
+
 
     public function getCells(): array
     {
@@ -34,5 +57,10 @@ class Crop
     public function setAlive(int $x, int $y): void
     {
         $this->cells[$y - 1][$x - 1]->setIsAlive(true);
+    }
+
+    private function getWidth(): mixed
+    {
+        return $this->width;
     }
 }

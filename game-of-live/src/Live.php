@@ -8,4 +8,14 @@ class Live
     {
         return $crop;
     }
+
+    private function cellIsAlive($x, $y)
+    {
+
+    }
+
+    private function cellIsNotAlive($x, $y)
+    {
+
+    }
 }

@@ -12,4 +12,9 @@ class Cell
     {
         return $this->isAlive;
     }
+
+    public function setIsAlive(bool $alive): void
+    {
+        $this->isAlive = $alive;
+    }
 }

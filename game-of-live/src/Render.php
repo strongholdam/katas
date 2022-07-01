@@ -4,15 +4,18 @@ namespace App;
 
 class Render
 {
-	public static function render(Crop $crop)
-	{
-		$cells = $crop->getCells();
+    public static function render(Crop $crop)
+    {
+        $cells = $crop->getCells();
+        $width = count($cells);
+        $height = count($cells[0]);
 
-		foreach ($cells as $key => $row) {
-			foreach ($row as $cell) {
-				echo $cell->isAlive() ? 'O' : '.';
-			}
-			echo "\n";
-		}
-	}
+        for ($y = 0; $y < $height; $y++) {
+            for ($x = 0; $x < $width; $x++) {
+                $cell = $cells[$x][$y];
+                echo $cell->isAlive() ? '*' : '.';
+            }
+            echo "\n";
+        }
+    }
 }

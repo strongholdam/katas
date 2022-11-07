@@ -13,9 +13,9 @@ abstract class AbstractTestCase extends TestCase
         return new Project('ARTURO', $this->date('07/01/2022'), $this->date('24/01/2022'), 19000.0);
     }
 
-    protected function date($str): DateTimeInterface
+    protected function date($dateAsString): DateTimeInterface
     {
-        return \DateTime::createFromFormat('d/m/Y', $str);
+        return \DateTime::createFromFormat('d/m/Y H:i:s', sprintf('%s 00:00:00', $dateAsString));
     }
 
     protected function mijas(): Project

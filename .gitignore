@@ -3,9 +3,10 @@
 ###< phpunit/phpunit ###
 
 ###> PHPStorm ###
-/.idea/
+.idea/
 ###< PHPStorm ###
 
 ###> composer ###
 vendor/
+composer.lock
 ###< composer ###

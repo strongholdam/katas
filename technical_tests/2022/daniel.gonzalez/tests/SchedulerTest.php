@@ -4,7 +4,6 @@ namespace Tests;
 
 use Combinator;
 use Scheduler;
-use Validator;
 
 class SchedulerTest extends AbstractTestCase
 {
@@ -35,6 +34,6 @@ class SchedulerTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->scheduler = new Scheduler(new Combinator(), new Validator());
+        $this->scheduler = new Scheduler(new Combinator());
     }
 }

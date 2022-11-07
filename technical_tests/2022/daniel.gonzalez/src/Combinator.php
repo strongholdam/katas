@@ -2,43 +2,45 @@
 
 class Combinator
 {
-    public function calculate(array $items): array
-    {
-        $options = $this->getCombinations($items);
-
-        return array_map(function (array $option) {
-            return new Combination($option);
-        }, $options);
-    }
-
-    protected function getCombinations(array $items): array
+    public function calculate(array $projects): array
     {
         $combinations = [];
         /** @var Project $project */
-        foreach ($items as $item) {
-            if (count($items) <= 1) {
-                return [[$item]];
-            }
-            $childOptions = $this->getCombinations($this->getCopyWithoutItem($items, $item));
-            foreach ($childOptions as $childOption) {
-                $combinations[] = array_merge([$item], $childOption);
-            }
+        foreach ($projects as $project) {
+            $combination = new Combination();
+            $combination->add($project);
+
+            $this->addProjects($combination, $projects);
+
+            $combinations[] = $combination;
         }
 
         return $combinations;
     }
 
-    private function getCopyWithoutItem(array $projects, $project): array
+    private function addProjects(Combination $combination, array $projects): void
     {
-        $copy = [];
-        foreach ($projects as $currentProject) {
-            if ($project == $currentProject) {
+        /** @var Project $project */
+        foreach ($projects as $project) {
+            $current = $combination->getLast();
+            if ($this->isSame($current, $project)) {
                 continue;
             }
-            $copy[] = $currentProject;
+            if (!$this->startEqualOrAfter($current, $project)) {
+                continue;
+            }
+            $combination->add($project);
+            $this->addProjects($combination, $projects);
         }
-
-        return $copy;
     }
 
+    private function isSame(Project $current, Project $project): bool
+    {
+        return $current === $project;
+    }
+
+    private function startEqualOrAfter(Project $current, Project $project): bool
+    {
+        return $current->getTo() <= $project->getFrom();
+    }
 }

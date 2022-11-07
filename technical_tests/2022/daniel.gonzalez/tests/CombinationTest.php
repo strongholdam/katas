@@ -14,7 +14,7 @@ class CombinationTest extends AbstractTestCase
             'case 2' => [new  Combination([$this->molina(), $this->tenerife()]), ['profit' => 14000.0 + 7000.0, 'name' => 'MOLINA-TENERIFE'],],
             'case 3' => [new  Combination([$this->molina(), $this->tenerife(), $this->arturo()]), ['profit' => 14000.0 + 7000.0 + 19000.0, 'name' => 'MOLINA-TENERIFE-ARTURO'],],
             'case 4' => [new  Combination([$this->tenerife(), $this->arturo(), $this->molina()]), ['profit' => 14000.0 + 7000.0 + 19000.0, 'name' => 'MOLINA-TENERIFE-ARTURO'],],
-            'case 5l' => [new  Combination([$this->molina(), $this->molina()]), ['profit' => 14000.0, 'name' => 'MOLINA'],],
+            'case 5' => [new  Combination([$this->molina(), $this->molina()]), ['profit' => 14000.0, 'name' => 'MOLINA'],],
         ];
     }
 

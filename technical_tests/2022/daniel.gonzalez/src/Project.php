@@ -2,7 +2,7 @@
 
 class Project
 {
-    public function __construct(private string $name, private \DateTimeInterface $from, private \DateTimeInterface $to, private float $profit)
+    public function __construct(private readonly string $name, private readonly \DateTimeInterface $from, private readonly \DateTimeInterface $to, private readonly float $profit)
     {
     }
 

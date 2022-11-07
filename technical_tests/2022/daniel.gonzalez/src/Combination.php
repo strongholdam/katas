@@ -13,14 +13,11 @@ class Combination
 
     public function add(Project $project): void
     {
-        if (!in_array($project, $this->items)) {
-            $this->items[] = $project;
+        if (in_array($project, $this->items)) {
+            return;
         }
-    }
-
-    public function getItems(): array
-    {
-        return $this->items;
+        $this->items[] = $project;
+        $this->sort();
     }
 
     public function count(): int
@@ -28,9 +25,18 @@ class Combination
         return count($this->items);
     }
 
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    public function getLast(): Project
+    {
+        return end($this->items);
+    }
+
     public function getName(): string
     {
-        $this->sort();
         $names = array_map(function (Project $project) {
             return $project->getName();
         }, $this->items);
